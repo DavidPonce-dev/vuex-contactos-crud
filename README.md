@@ -1,24 +1,17 @@
 # vuex-contactos-crud
 
 ## Project setup
+# antes de iniciar el proyecto debe instalar las dependencias con el sgte comando
 ```
 npm install
 ```
 
-### Compiles and hot-reloads for development
+## Correrlo en modo hot-reload
 ```
 npm run serve
 ```
 
-### Compiles and minifies for production
+## Para compilarlo en HTML, CSS y JS
 ```
 npm run build
 ```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
