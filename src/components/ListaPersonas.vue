@@ -6,10 +6,10 @@ export default {
     ...Vuex.mapState("personas", ['editId', "personas"]),
   },
   methods: {
-    ...Vuex.mapActions("personas", ["delPersona"]),
+    ...Vuex.mapActions("personas", ['setEditId', "delPersona"]),
 
     editar(persona) {
-      this.editId = persona.id
+      this.setEditId(persona.id)
     },
     borrar(persona) {
       this.delPersona(persona);

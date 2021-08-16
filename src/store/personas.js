@@ -12,6 +12,9 @@ export default {
     },
     delPersona(state, persona) {
       state.personas = state.personas.filter( p => p.id != persona.id )
+    },
+    setEditId(state, id) {
+      state.editId = id
     }
   },
   actions: {
@@ -23,6 +26,9 @@ export default {
     },
     delPersona({ commit }, persona){
       commit('delPersona', persona)
+    },
+    setEditId({ commit }, id){
+      commit('setEditId', id)
     }
   }
 }
