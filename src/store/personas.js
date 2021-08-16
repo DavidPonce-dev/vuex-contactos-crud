@@ -8,7 +8,9 @@ export default {
     addPersona({ personas }, persona) {
       personas.push(persona)
     },
-    setPersona() {
+    setPersona(state, persona) {
+      state.personas[state.editId] = persona
+      state.editId = null
     },
     delPersona(state, persona) {
       state.personas = state.personas.filter( p => p.id != persona.id )
