@@ -1,10 +1,12 @@
 <script>
 import { mapActions, mapState } from "vuex";
 import Persona from "../models/Persona";
+import Error from "./Error";
 import FormEditor from "./FormEditor";
 export default {
   components: {
     FormEditor,
+    Error
   },
   data() {
     return {
@@ -62,19 +64,7 @@ export default {
         Agregar persona a la lista
       </button>
     </form>
-    {{}}
-    <div v-if="error != ''" class="error alert alert-danger" role="alert">
-      {{ error }}
-    </div>
+    <Error v-if="error != ''" :error=error />
     <FormEditor v-if="editId != null" />
   </div>
 </template>
-
-<style scoped>
-.error {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-</style>
