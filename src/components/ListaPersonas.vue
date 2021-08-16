@@ -24,13 +24,31 @@ export default {
 </script>
 
 <template>
-  <ul>
-    <li v-for="persona in personas" v-bind:key="persona.id">
-      {{ persona.nombre }} - {{ persona.telefono }} - {{ persona.correo }}
-      <button v-on:click.prevent="editar(persona)">Editar</button>
-      <button v-on:click.prevent="borrar(persona)">Borrar</button>
-    </li>
-  </ul>
+  <div class="card m-3">
+    <table class="table table-dark table-striped">
+      <thead>
+        <tr>
+          <th scope="col">Nombre</th>
+          <th scope="col">Edad</th>
+          <th scope="col">Correo</th>
+          <th scope="col">Telefono</th>
+          <th scope="col">Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="persona in personas" v-bind:key="persona.id">
+          <th>{{ persona.nombre }}</th>
+          <td>{{ persona.edad }}</td>
+          <td>{{ persona.correo }}</td>
+          <td>{{ persona.telefono }}</td>
+          <td>
+            <button class="btn btn-info" v-on:click.prevent="editar(persona)">✏</button>
+            <button class="btn btn-danger" v-on:click.prevent="borrar(persona)">🗑</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </template>
 
 <style>
