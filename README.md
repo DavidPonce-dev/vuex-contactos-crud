@@ -1,7 +1,7 @@
 # vuex-contactos-crud
 
 ## Project setup
-# antes de iniciar el proyecto debe instalar las dependencias con el sgte comando
+### antes de iniciar el proyecto debe instalar las dependencias con el sgte comando
 ```
 npm install
 ```
