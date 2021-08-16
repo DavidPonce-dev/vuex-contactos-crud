@@ -57,9 +57,10 @@ export default {
 
 <style scoped>
 .editor {
+	border: 1px #fff solid;
   position: absolute;
-  width:98%;
-  top: 10px;
-  left: 10px;
+  width:100%;
+  top: 0px;
+  left: 0px;
 }
 </style>
