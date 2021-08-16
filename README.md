@@ -7,11 +7,7 @@ npm install
 ```
 
 ## Correrlo en modo hot-reload
+### en este modo podras correr el progama sin compilar mediante un servidor local
 ```
 npm run serve
-```
-
-## Para compilarlo en HTML, CSS y JS
-```
-npm run build
 ```
