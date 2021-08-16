@@ -1,16 +1,17 @@
 export default {
   namespaced: true,
   state: {
+    editId: null,
     personas: []
   },
   mutations: {
-    addPersona(state, persona) {
-      return state.personas.push(persona)
+    addPersona({ personas }, persona) {
+      personas.push(persona)
     },
     setPersona() {
     },
     delPersona(state, persona) {
-      return state.personas.filter( p => p.id != persona.id )
+      state.personas = state.personas.filter( p => p.id != persona.id )
     }
   },
   actions: {
