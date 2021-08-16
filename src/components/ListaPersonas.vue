@@ -3,13 +3,13 @@ import Vuex from "vuex";
 
 export default {
   computed: {
-    ...Vuex.mapState("personas", ['editId', "personas"]),
+    ...Vuex.mapState("personas", ["personas"]),
   },
   methods: {
     ...Vuex.mapActions("personas", ['setEditId', "delPersona"]),
 
     editar(persona) {
-      this.setEditId(persona.id)
+      this.setEditId(this.personas.indexOf(persona))
     },
     borrar(persona) {
       this.delPersona(persona);
