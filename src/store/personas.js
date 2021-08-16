@@ -1,6 +1,5 @@
-import { createStore } from 'vuex'
-
-export default createStore({
+export default {
+  namespaced: true,
   state: {
     personas: []
   },
@@ -25,4 +24,4 @@ export default createStore({
       commit('delPersona', persona)
     }
   }
-})
+}

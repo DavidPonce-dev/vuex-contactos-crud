@@ -1,3 +1,29 @@
+<script>
+import Vuex from "vuex";
+import Persona from "../models/Persona";
+
+export default {
+  data() {
+    return {
+      nombre: "",
+    };
+  },
+  methods: {
+    ...Vuex.mapActions('personas', ['addPersona', 'setPersona', 'delPersona']),
+    
+		submit() {
+      const persona = new Persona();
+      persona.nombre = this.nombre;
+      persona.id = new Date().toString();
+			this.addPersona(persona);
+    },
+  },
+  computed: {
+    ...Vuex.mapState('personas', ['personas']),
+  },
+};
+</script>
+
 <template>
   <div>
     <ul>
@@ -5,23 +31,12 @@
         {{ persona.nombre }} - {{ persona.telefono }} - {{ persona.correo }}
       </li>
     </ul>
-		<form>
-			<input type="text" placeholder="Inserte nombre">
-			<input type="text" placeholder="Inserte nombre">
-			<input type="text" placeholder="Inserte nombre">
-		</form>
+    <form v-on:submit.prevent="submit">
+      <input v-model="nombre" type="text" placeholder="Inserte nombre" />
+      <button type="submit">Agregar</button>
+    </form>
   </div>
 </template>
-
-<script>
-export default {
-  computed: {
-    personas() {
-      return this.$store.personas;
-    },
-  },
-};
-</script>
 
 <style>
 </style>
