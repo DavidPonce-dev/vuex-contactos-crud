@@ -1,13 +1,22 @@
 <script>
 import { mapActions, mapState } from 'vuex';
+import Persona from '../models/Persona'
 export default {
+	data () {
+		return {
+			persona: new Persona()
+		}
+	},
+	mounted () {
+		this.persona = {...this.personas[this.editId]}
+	},
 	computed: {
 		...mapState('personas', ['editId', 'personas'])
 	},
 	methods: {
-		...mapActions('personas', ['setPersona']),
+		...mapActions('personas', ['setPersona', 'setEditId']),
 		submit() {
-			this.setPersona()
+			this.setPersona(this.persona)
 		}
 	}
 };
@@ -41,6 +50,7 @@ export default {
         placeholder="Inserte telefono"
       />
       <button type="submit" class="btn btn-info">Editar persona</button>
+      <a @click="setEditId(null)" class="ms-1 btn btn-danger">Cerrar editor</a>
     </form>
   </div>
 </template>
