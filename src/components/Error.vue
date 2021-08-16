@@ -1,17 +1,15 @@
 <template>
-  <div class="error alert alert-danger">
-    {{ error }}
+  <div class="error alert alert-danger"  v-if="errorMsg != ''">
+    {{ errorMsg }}
   </div>
 </template>
 
 <script>
+import { mapState } from 'vuex';
 export default {
-  props: {
-    error: {
-      type: String,
-      required: true,
-    },
-  },
+  computed: {
+    ...mapState('error', ['errorMsg'])
+  }
 };
 </script>
 

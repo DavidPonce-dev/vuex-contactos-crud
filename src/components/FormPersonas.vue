@@ -1,12 +1,10 @@
 <script>
 import { mapActions, mapState } from "vuex";
 import Persona from "../models/Persona";
-import Error from "./Error";
 import FormEditor from "./FormEditor";
 export default {
   components: {
-    FormEditor,
-    Error
+    FormEditor
   },
   data() {
     return {
@@ -18,6 +16,7 @@ export default {
     ...mapState("personas", ["editId"]),
   },
   methods: {
+    ...mapActions("error", ["setErrorMsg"]),
     ...mapActions("personas", ["addPersona"]),
     submit() {
       try {
@@ -25,8 +24,7 @@ export default {
         this.addPersona(this.persona);
         this.persona = new Persona();
       } catch (error) {
-        this.error = error.message;
-        setTimeout(() => this.error = '',3000)
+        this.setErrorMsg(error.message);
       }
     },
   },
@@ -64,7 +62,6 @@ export default {
         Agregar persona a la lista
       </button>
     </form>
-    <Error v-if="error != ''" :error=error />
     <FormEditor v-if="editId != null" />
   </div>
 </template>

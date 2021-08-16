@@ -2,16 +2,11 @@
 import { mapActions, mapState } from "vuex";
 import Persona from "../models/Persona";
 
-import Error from "./Error";
 export default {
   data() {
     return {
       persona: new Persona(),
-      error: ""
     };
-  },
-  components:{
-    Error
   },
   mounted() {
     this.persona = { ...this.personas[this.editId] };
@@ -21,12 +16,12 @@ export default {
   },
   methods: {
     ...mapActions("personas", ["setPersona", "setEditId"]),
+    ...mapActions("error", ["setErrorMsg"]),
     submit() {
       try {
         this.setPersona(this.persona);
       } catch (error) {
-        this.error = error.message;
-        setTimeout(() => (this.error = ""), 3000);
+        this.setErrorMsg(error.message)
       }
     },
   },
@@ -63,7 +58,6 @@ export default {
       <button type="submit" class="btn btn-info">Editar persona</button>
       <a @click="setEditId(null)" class="ms-1 btn btn-danger">Cerrar editor</a>
     </form>
-    <Error v-if="error != ''" :error=error />
   </div>
 </template>
 

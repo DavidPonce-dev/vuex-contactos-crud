@@ -1,18 +1,18 @@
-<template>
-  <FormPersonas />
-  <ListaPersonas />
-</template>
-
 <script>
 import ListaPersonas from './components/ListaPersonas'
 import FormPersonas from './components/FormPersonas'
+import Error from './components/Error'
 export default{ 
     components:{
       ListaPersonas,
-      FormPersonas
+      FormPersonas,
+      Error
     },
 }
 </script>
 
-<style>
-</style>
+<template>
+  <FormPersonas />
+  <ListaPersonas />
+  <Error />
+</template>
