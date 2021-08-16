@@ -1,24 +1,35 @@
 <script>
-import { mapActions, mapState } from 'vuex';
-import Persona from '../models/Persona'
+import { mapActions, mapState } from "vuex";
+import Persona from "../models/Persona";
+
+import Error from "./Error";
 export default {
-	data () {
-		return {
-			persona: new Persona()
-		}
-	},
-	mounted () {
-		this.persona = {...this.personas[this.editId]}
-	},
-	computed: {
-		...mapState('personas', ['editId', 'personas'])
-	},
-	methods: {
-		...mapActions('personas', ['setPersona', 'setEditId']),
-		submit() {
-			this.setPersona(this.persona)
-		}
-	}
+  data() {
+    return {
+      persona: new Persona(),
+      error: ""
+    };
+  },
+  components:{
+    Error
+  },
+  mounted() {
+    this.persona = { ...this.personas[this.editId] };
+  },
+  computed: {
+    ...mapState("personas", ["editId", "personas"]),
+  },
+  methods: {
+    ...mapActions("personas", ["setPersona", "setEditId"]),
+    submit() {
+      try {
+        this.setPersona(this.persona);
+      } catch (error) {
+        this.error = error.message;
+        setTimeout(() => (this.error = ""), 3000);
+      }
+    },
+  },
 };
 </script>
 
@@ -52,14 +63,15 @@ export default {
       <button type="submit" class="btn btn-info">Editar persona</button>
       <a @click="setEditId(null)" class="ms-1 btn btn-danger">Cerrar editor</a>
     </form>
+    <Error v-if="error != ''" :error=error />
   </div>
 </template>
 
 <style scoped>
 .editor {
-	border: 1px #fff solid;
+  border: 1px #fff solid;
   position: absolute;
-  width:100%;
+  width: 100%;
   top: 0px;
   left: 0px;
 }
